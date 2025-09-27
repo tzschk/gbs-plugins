@@ -6,6 +6,7 @@ A scene type based on early arcade platformers with beloved features such as:
 - Fixed jump arc
 - constant move speed, no acceleration
 - Complete momentum loss when falling
+
 Jump speed, climb speed, max fall speed, and gravity are adjustable in Settings. Horizontal movement uses actor's speed.
 
 https://github.com/user-attachments/assets/deda17e0-9e10-470c-9413-7c7a04b10302
