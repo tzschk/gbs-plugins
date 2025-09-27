@@ -15,7 +15,7 @@ https://github.com/user-attachments/assets/deda17e0-9e10-470c-9413-7c7a04b10302
 A scene type with grid-aligned movement based on the original Legend of Zelda.
 There are two movement styles available in Settings:
 - Strict: cardinal only alignment (true to LOZ)
-- Smooth: player aligns diagonally for smoother movement (A bit like to Pac-Man)
+- Smooth: player aligns diagonally for smoother movement (A bit like Pac-Man)
 
 https://github.com/user-attachments/assets/b6b51c11-5bc1-409b-93e0-c938f25040d3
 
