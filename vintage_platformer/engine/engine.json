@@ -1,0 +1,56 @@
+{
+    "version": "4.2.0-e1",
+    
+    "fields": [
+        {
+            "key": "plat_climb_vel",
+            "sceneType": "vintage_platform",
+            "label": "FIELD_CLIMB_VEL",
+            "group": "Vintage Platformer",
+            "type": "slider",
+            "cType": "WORD",
+            "defaultValue": 2048,
+            "min": 0,
+            "max": 16384
+        },
+        {
+            "key": "plat_jump_vel",
+            "sceneType": "vintage_platform",
+            "label": "FIELD_JUMP_VEL",
+            "group": "Vintage Platformer",
+            "type": "slider",
+            "cType": "WORD",
+            "defaultValue": 6476,
+            "min": 0,
+            "max": 32768
+        },
+        {
+            "key": "plat_grav",
+            "sceneType": "vintage_platform",
+            "label": "FIELD_GRAVITY",
+            "group": "Vintage Platformer",
+            "type": "slider",
+            "cType": "WORD",
+            "defaultValue": 512,
+            "min": 0,
+            "max": 8192
+        },
+        {
+            "key": "plat_max_fall_vel",
+            "sceneType": "vintage_platform",
+            "label": "FIELD_MAX_FALL_VEL",
+            "group": "Vintage Platformer",
+            "type": "slider",
+            "cType": "WORD",
+            "defaultValue": 8192,
+            "min": 0,
+            "max": 24560
+        }
+    ],
+    "sceneTypes": [
+        {
+            "key": "vintage_platform",
+            "label": "Vintage Platformer"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+	"version": "4.2.0-e1",
+	
+	"fields": [
+		{
+			"key": "VINTAGE_MOVEMENT_STYLE",
+			"label": "Movement Style",
+			"group": "Vintage Adventure",
+			"type": "select",
+			"options": [
+				["FALSE", "Strict"],
+				["TRUE", "Smooth"]
+			],
+			"cType": "define",
+			"defaultValue": "0"
+		}
+	],
+	
+	"sceneTypes": [
+		{
+			"key": "vintage_adventure",
+			"label": "Vintage Adventure"
+		}
+	]
+}
