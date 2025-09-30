@@ -1,0 +1,83 @@
+{
+  "version": "4.2.0-e1",
+  "fields": [
+    {
+      "key": "INPUT_CAR_ACCELERATE",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Accelerate",
+      "group": "Simple Car",
+      "type": "select",
+      "options": [
+        ["INPUT_A", "A"],
+        ["INPUT_B", "B"],
+        ["INPUT_UP", "FIELD_DIRECTION_UP"]
+      ],
+      "cType": "define",
+      "defaultValue": "INPUT_A"
+    },
+    {
+      "key": "INPUT_CAR_BRAKE",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Brake",
+      "group": "Simple Car",
+      "type": "select",
+      "options": [
+        ["INPUT_A", "A"],
+        ["INPUT_B", "B"],
+        ["INPUT_DOWN", "FIELD_DIRECTION_DOWN"]
+      ],
+      "cType": "define",
+      "defaultValue": "INPUT_B"
+    },
+    {
+      "key": "car_acc",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Acceleration",
+      "group": "Simple Car",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 16,
+      "min": 0,
+      "max": 256
+    },
+    {
+      "key": "car_dec",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Deceleration",
+      "group": "Simple Car",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 4,
+      "min": 0,
+      "max": 256
+    },
+    {
+      "key": "car_brake",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Braking",
+      "group": "Simple Car",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 32,
+      "min": 0,
+      "max": 256
+    },
+    {
+      "key": "car_turn_radius",
+      "sceneType": "SIMPLE_CAR",
+      "label": "Turning Radius",
+      "group": "Simple Car",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 7,
+      "min": 0,
+      "max": 32
+    }
+  ],
+  "sceneTypes": [
+    {
+      "key": "SIMPLE_CAR",
+      "label": "Simple Car"
+    }
+  ]
+}

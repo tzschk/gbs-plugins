@@ -1,0 +1,22 @@
+{
+  "version": "4.2.0-e1",
+  "fields": [
+    {
+      "key": "tank_turn_speed",
+      "sceneType": "SIMPLE_TANK",
+      "label": "Turn speed",
+      "group": "Simple Tank",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 3,
+      "min": 0,
+      "max": 32
+    }
+  ],
+  "sceneTypes": [
+    {
+      "key": "SIMPLE_TANK",
+      "label": "Simple Tank"
+    }
+  ]
+}
