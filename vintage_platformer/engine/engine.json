@@ -1,5 +1,5 @@
 {
-    "version": "4.2.0-e1",
+    "version": "4.2.2-e1",
     
     "fields": [
         {
@@ -20,7 +20,7 @@
             "group": "Vintage Platformer",
             "type": "slider",
             "cType": "WORD",
-            "defaultValue": 6476,
+            "defaultValue": 8192,
             "min": 0,
             "max": 32768
         },

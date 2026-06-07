@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0-e1",
+  "version": "4.2.2-e1",
   "fields": [
     {
       "key": "INPUT_CAR_ACCELERATE",
@@ -69,7 +69,7 @@
       "group": "Simple Car",
       "type": "slider",
       "cType": "UBYTE",
-      "defaultValue": 7,
+      "defaultValue": 8,
       "min": 0,
       "max": 32
     }

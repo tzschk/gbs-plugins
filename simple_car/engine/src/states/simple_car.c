@@ -13,7 +13,8 @@
 #include "data_manager.h"
 #include "rand.h"
 #include "vm.h"
-#include "math.h"
+// #include "math.h"
+#include "sincos.h"
 
 #ifndef INPUT_CAR_ACCELERATE
 #define INPUT_CAR_ACCELERATE	INPUT_A
@@ -75,9 +76,9 @@ void simple_car_update(void) BANKED {
 	}
 	
 	player_moving = car_forward_vel != 0;
-		
+	
 	if (player_moving) {
-		point16_t new_pos;
+		upoint16_t new_pos;
 		new_pos.x = PLAYER.pos.x;
 		new_pos.y = PLAYER.pos.y;
 		
@@ -103,31 +104,31 @@ void simple_car_update(void) BANKED {
 		
 		if (car_forward_vel < 0) {
 			vel_angle += 128;
-			point_translate_angle(&new_pos, vel_angle, -car_forward_vel >> 4);
+			upoint_translate_angle(&new_pos, vel_angle, -car_forward_vel >> 4);
 		} else {
-			point_translate_angle(&new_pos, vel_angle, car_forward_vel >> 4);
+			upoint_translate_angle(&new_pos, vel_angle, car_forward_vel >> 4);
 		}
 		
 		// Step X
-		tile_start = (((PLAYER.pos.y >> 4) + PLAYER.bounds.top)    >> 3);
-		tile_end   = (((PLAYER.pos.y >> 4) + PLAYER.bounds.bottom) >> 3) + 1;
+		tile_start = SUBPX_TO_TILE(PLAYER.pos.y + PLAYER.bounds.top);
+		tile_end   = SUBPX_TO_TILE(PLAYER.pos.y + PLAYER.bounds.bottom);
 		if (vel_angle < ANGLE_180DEG) {
-			UBYTE tile_x = ((new_pos.x >> 4) + PLAYER.bounds.right) >> 3;
+			UBYTE tile_x = SUBPX_TO_TILE(new_pos.x + PLAYER.bounds.right);
 			while (tile_start != tile_end) {
 				
 				if (tile_at(tile_x, tile_start) & COLLISION_LEFT) {
-					new_pos.x = (((tile_x << 3) - PLAYER.bounds.right) << 4) - 1;
+					new_pos.x = TILE_TO_SUBPX(tile_x) - PLAYER.bounds.right - 1;
 					if (vel_angle > ANGLE_45DEG && vel_angle < ANGLE_135DEG) car_forward_vel = 0;
 					break;
 				}
 				tile_start++;
 			}
-			PLAYER.pos.x = MIN((image_width - PLAYER.bounds.right - 1) << 4, new_pos.x);
+			PLAYER.pos.x = MIN((image_width - PLAYER.bounds.right - 1) << 5, new_pos.x);
 		} else {
-			UBYTE tile_x = ((new_pos.x >> 4) + PLAYER.bounds.left) >> 3;
+			UBYTE tile_x = SUBPX_TO_TILE(new_pos.x + PLAYER.bounds.left);
 			while (tile_start != tile_end) {
 				if (tile_at(tile_x, tile_start) & COLLISION_RIGHT) {
-					new_pos.x = ((((tile_x + 1) << 3) - PLAYER.bounds.left) << 4) + 1;
+					new_pos.x = TILE_TO_SUBPX(tile_x + 1) - PLAYER.bounds.left + 1;
 					if (vel_angle > ANGLE_225DEG && vel_angle < ANGLE_315DEG) car_forward_vel = 0;
 					break;
 				}
@@ -137,13 +138,13 @@ void simple_car_update(void) BANKED {
 		}
 		
 		// Step Y
-		tile_start = (((PLAYER.pos.x >> 4) + PLAYER.bounds.left)  >> 3);
-		tile_end   = (((PLAYER.pos.x >> 4) + PLAYER.bounds.right) >> 3) + 1;
+		tile_start = SUBPX_TO_TILE(PLAYER.pos.x + PLAYER.bounds.left);
+		tile_end   = SUBPX_TO_TILE(PLAYER.pos.x + PLAYER.bounds.right);
 		if (vel_angle > ANGLE_90DEG && vel_angle < ANGLE_270DEG) {
-			UBYTE tile_y = ((new_pos.y >> 4) + PLAYER.bounds.bottom) >> 3;
+			UBYTE tile_y = SUBPX_TO_TILE(new_pos.y + PLAYER.bounds.bottom);
 			while (tile_start != tile_end) {
 				if (tile_at(tile_start, tile_y) & COLLISION_TOP) {
-					new_pos.y = ((((tile_y) << 3) - PLAYER.bounds.bottom) << 4) - 1;
+					new_pos.y = TILE_TO_SUBPX(tile_y) - PLAYER.bounds.bottom - 1;
 					if (vel_angle > ANGLE_135DEG && vel_angle < ANGLE_225DEG) car_forward_vel = 0;
 					break;
 				}
@@ -151,10 +152,10 @@ void simple_car_update(void) BANKED {
 			}
 			PLAYER.pos.y = new_pos.y;
 		} else {
-			UBYTE tile_y = (((new_pos.y >> 4) + PLAYER.bounds.top) >> 3);
+			UBYTE tile_y = SUBPX_TO_TILE(new_pos.y + PLAYER.bounds.top);
 			while (tile_start != tile_end) {
 				if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {
-					new_pos.y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
+					new_pos.y = TILE_TO_SUBPX(tile_y + 1) - PLAYER.bounds.top + 1;
 					if (vel_angle > ANGLE_315DEG || vel_angle < ANGLE_45DEG) car_forward_vel = 0;
 					break;
 				}
@@ -178,7 +179,7 @@ void simple_car_update(void) BANKED {
 		}
 		
 		// Check for actor collisions
-		hit_actor = actor_overlapping_player(FALSE);
+		hit_actor = actor_overlapping_player();
 		if (hit_actor != NULL && hit_actor->collision_group) {
 			player_register_collision_with(hit_actor);
 		}
