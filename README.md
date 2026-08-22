@@ -1,6 +1,8 @@
 # Tzschk's GB Studio Plugins
 A few odd scene types for GB Studio. Currently tested up to v4.2.2.
 
+If you have questions, feel free to ping me on the GB Studio discord!
+
 ## Simple Car
 
 https://github.com/user-attachments/assets/e9d0caa2-bf08-4811-9463-6ebe1ec19dd7
